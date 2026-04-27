@@ -2,10 +2,13 @@ export function CanadianConnection() {
   return (
     <section id="canadian" className="py-20 px-4 bg-card border-y border-border">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center justify-center gap-4 mb-12">
-          <MapleLeafIcon className="w-10 h-10 text-accent" />
+        <div className="flex flex-col items-center justify-center mb-12">
           <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center">
-            <span className="block">🇨🇦 The Canadian Connection 🇨🇦</span>
+            <span className="block">The Canadian Connection</span>
+            <span className="flex items-center justify-center gap-3 mt-2">
+              <span>presented</span>
+              <MapleLeafIcon className="w-6 h-6 text-red-600" />
+            </span>
             <span className="block text-3xl md:text-4xl mt-2">Rock and Roll Canada</span>
           </h2>
         </div>
