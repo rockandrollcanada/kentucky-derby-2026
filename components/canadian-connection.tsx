@@ -6,7 +6,7 @@ export function CanadianConnection() {
           <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center">
             <span className="block">The Canadian Connection</span>
             <span className="flex items-center justify-center gap-3 mt-2">
-              <span>presented</span>
+              <span>presented by</span>
               <MapleLeafIcon className="w-6 h-6 text-red-600" />
             </span>
             <span className="block text-3xl md:text-4xl mt-2">Rock and Roll Canada</span>
