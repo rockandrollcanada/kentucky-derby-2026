@@ -4,8 +4,9 @@ export function CanadianConnection() {
       <div className="max-w-5xl mx-auto">
         <div className="flex items-center justify-center gap-4 mb-12">
           <MapleLeafIcon className="w-10 h-10 text-accent" />
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
-            The Canadian Connection
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-center">
+            <span className="block">🇨🇦 The Canadian Connection 🇨🇦</span>
+            <span className="block text-3xl md:text-4xl mt-2">Rock and Roll Canada</span>
           </h2>
         </div>
 
