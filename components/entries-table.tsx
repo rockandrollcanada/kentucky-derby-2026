@@ -15,7 +15,7 @@ const entries = [
   { post: 10, horse: "Wonder Dean", odds: "25-1", trainer: "Shug McGaughey", jockey: "Jose Ortiz" },
   { post: 11, horse: "Incredibolt", odds: "25-1", trainer: "Brendan Walsh", jockey: "Brian Hernandez Jr." },
   { post: 12, horse: "Chief Wallabee", odds: "10-1", trainer: "Kenny McPeek", jockey: "Julien Leparoux" },
-  { post: 13, horse: "Silent Tactic", odds: "30-1", trainer: "Mark Casse", jockey: "Cristian Torres", canadian: true },
+  { post: 13, horse: "Maple Monarch", odds: "20-1", trainer: "Josie Carroll", jockey: "Patrick Husbands", canadian: true },
   { post: 14, horse: "Potenete", odds: "15-1", trainer: "Bill Mott", jockey: "Junior Alvarado" },
   { post: 15, horse: "Emerging Market", odds: "20-1", trainer: "Chad Brown", jockey: "Jose Lezcano" },
   { post: 16, horse: "Pavlovian", odds: "40-1", trainer: "Doug O'Neill", jockey: "Mario Gutierrez" },

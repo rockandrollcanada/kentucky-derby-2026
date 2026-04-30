@@ -2,56 +2,69 @@ export function CanadianConnection() {
   return (
     <section id="canadian" className="py-20 px-4 bg-card border-y border-border">
       <div className="max-w-5xl mx-auto">
-        <div className="flex items-center justify-center gap-4 mb-12">
+        <div className="flex items-center justify-center gap-4 mb-4">
           <MapleLeafIcon className="w-10 h-10 text-accent" />
-          <h2 className="text-4xl md:text-5xl font-bold text-foreground">
+          <h2 className="text-4xl md:text-5xl font-bold text-foreground text-balance">
             The Canadian Connection
           </h2>
         </div>
 
+        {/* Scratch notice */}
+        <div className="max-w-3xl mx-auto mb-12 bg-destructive/10 border border-destructive/30 rounded-lg p-4 text-center">
+          <p className="text-sm md:text-base text-foreground">
+            <span className="font-bold text-destructive uppercase tracking-wide">Scratched:</span>{" "}
+            Mark Casse&apos;s <strong>Silent Tactic</strong> has been scratched from the 2026 Kentucky Derby
+            field. The Canadian banner now passes to Hall of Fame trainer{" "}
+            <strong>Josie Carroll</strong> and her promising colt <strong>Maple Monarch</strong>.
+          </p>
+        </div>
+
         <div className="grid md:grid-cols-2 gap-8">
-          {/* Mark Casse Feature */}
+          {/* Josie Carroll Feature */}
           <div className="bg-background rounded-xl border border-border p-6 md:p-8">
             <div className="flex items-start gap-4 mb-6">
               <div className="w-16 h-16 rounded-full bg-accent/10 flex items-center justify-center shrink-0">
                 <TrophyIcon className="w-8 h-8 text-accent" />
               </div>
               <div>
-                <h3 className="text-2xl font-bold text-foreground">Mark Casse</h3>
-                <p className="text-accent font-medium">Hall of Fame Trainer</p>
+                <h3 className="text-2xl font-bold text-foreground">Josie Carroll</h3>
+                <p className="text-accent font-medium">Canadian Hall of Fame Trainer</p>
               </div>
             </div>
-            
+
             <p className="text-muted-foreground mb-6 leading-relaxed">
-              Canadian trainer Mark Casse, inducted into the Racing Hall of Fame in 2020, 
-              brings <strong className="text-foreground">Silent Tactic</strong> to the 2026 Kentucky Derby. 
-              The dual Canadian and American Hall of Famer has been the leading trainer at 
-              <strong className="text-foreground"> Woodbine Racetrack in Toronto an incredible 14 times</strong>.
+              Toronto-based trainer Josie Carroll, inducted into the Canadian Horse Racing Hall of Fame in 2018,
+              steps onto the Churchill Downs stage with{" "}
+              <strong className="text-foreground">Maple Monarch</strong>. The trailblazing
+              conditioner became the{" "}
+              <strong className="text-foreground">first woman to train a Queen&apos;s Plate winner</strong>{" "}
+              with Edenwold in 2006, and repeated the feat with Inglorious in 2011.
             </p>
 
             <div className="bg-muted/50 rounded-lg p-4 mb-6">
               <p className="text-sm text-foreground italic">
-                &quot;Cristian learned to ride at our training center, and his brother still works for us today. 
-                You couldn&apos;t ask for a more wonderful young man, and he&apos;s worked hard.&quot;
+                &quot;This colt has the pedigree, the stride, and the heart for a mile and a quarter.
+                Patrick has known him since he was a yearling — there&apos;s no jockey I&apos;d rather have
+                under those Twin Spires.&quot;
               </p>
-              <p className="text-xs text-muted-foreground mt-2">— Mark Casse on jockey Cristian Torres</p>
+              <p className="text-xs text-muted-foreground mt-2">— Josie Carroll on Maple Monarch and Patrick Husbands</p>
             </div>
 
             <div className="grid grid-cols-2 gap-4">
               <div className="text-center p-3 bg-accent/10 rounded-lg">
-                <div className="text-3xl font-bold text-accent">14×</div>
-                <div className="text-xs text-muted-foreground">Woodbine Champion</div>
+                <div className="text-3xl font-bold text-accent">2×</div>
+                <div className="text-xs text-muted-foreground">Queen&apos;s Plate Winner</div>
               </div>
               <div className="text-center p-3 bg-accent/10 rounded-lg">
-                <div className="text-3xl font-bold text-accent">2020</div>
+                <div className="text-3xl font-bold text-accent">2018</div>
                 <div className="text-xs text-muted-foreground">Hall of Fame</div>
               </div>
             </div>
           </div>
 
-          {/* Silent Tactic Card */}
+          {/* Maple Monarch Card */}
           <div className="bg-background rounded-xl border border-border p-6 md:p-8">
-            <div className="flex items-center gap-2 mb-6">
+            <div className="flex items-center gap-2 mb-6 flex-wrap">
               <span className="px-3 py-1 bg-primary text-primary-foreground rounded-full text-sm font-bold">
                 Post 13
               </span>
@@ -60,32 +73,33 @@ export function CanadianConnection() {
               </span>
             </div>
 
-            <h3 className="text-3xl font-bold text-foreground mb-2">Silent Tactic</h3>
-            <p className="text-2xl text-primary font-bold mb-6">30-1</p>
+            <h3 className="text-3xl font-bold text-foreground mb-2">Maple Monarch</h3>
+            <p className="text-2xl text-primary font-bold mb-6">20-1</p>
 
             <div className="space-y-4 mb-6">
               <div className="flex justify-between py-2 border-b border-border">
                 <span className="text-muted-foreground">Sire</span>
-                <span className="text-foreground font-medium">Tacitus</span>
+                <span className="text-foreground font-medium">Mitole</span>
               </div>
               <div className="flex justify-between py-2 border-b border-border">
                 <span className="text-muted-foreground">Trainer</span>
-                <span className="text-foreground font-medium">Mark Casse</span>
+                <span className="text-foreground font-medium">Josie Carroll</span>
               </div>
               <div className="flex justify-between py-2 border-b border-border">
                 <span className="text-muted-foreground">Jockey</span>
-                <span className="text-foreground font-medium">Cristian Torres</span>
+                <span className="text-foreground font-medium">Patrick Husbands</span>
               </div>
               <div className="flex justify-between py-2 border-b border-border">
                 <span className="text-muted-foreground">Key Prep</span>
-                <span className="text-foreground font-medium">Arkansas Derby (G1) - 2nd</span>
+                <span className="text-foreground font-medium">Blue Grass Stakes (G1) - 3rd</span>
               </div>
             </div>
 
             <p className="text-muted-foreground text-sm leading-relaxed">
-              Arkansas Derby runner-up Silent Tactic represents Casse&apos;s continued pursuit of 
-              his first Kentucky Derby victory. The son of Tacitus has shown consistency 
-              throughout his campaign, finishing in the top two in most of his prep races.
+              A late-running son of Mitole, Maple Monarch closed strongly to finish third in the
+              Blue Grass at Keeneland and earned his way into the Derby gate via the Road to the
+              Kentucky Derby points standings. With Canadian Hall of Fame jockey Patrick Husbands
+              aboard, the Woodbine-bred colt carries the Maple Leaf into post 13.
             </p>
           </div>
         </div>
@@ -95,30 +109,33 @@ export function CanadianConnection() {
           <h3 className="text-xl font-bold text-foreground mb-6 text-center">
             Recent Canadian Connections in the Kentucky Derby
           </h3>
-          
+
           <div className="grid md:grid-cols-3 gap-6">
             <div className="text-center p-4">
               <div className="text-3xl font-bold text-secondary mb-1">2016</div>
               <div className="text-lg font-semibold text-foreground">Nyquist</div>
               <div className="text-sm text-muted-foreground">
-                Canadian-owned winner<br />
+                Canadian-owned winner
+                <br />
                 Jockey: Mario Gutierrez
-              </div>
-            </div>
-            <div className="text-center p-4">
-              <div className="text-3xl font-bold text-secondary mb-1">2017</div>
-              <div className="text-lg font-semibold text-foreground">Classic Empire</div>
-              <div className="text-sm text-muted-foreground">
-                Trainer: Mark Casse<br />
-                Finished 4th
               </div>
             </div>
             <div className="text-center p-4">
               <div className="text-3xl font-bold text-secondary mb-1">2019</div>
               <div className="text-lg font-semibold text-foreground">War of Will</div>
               <div className="text-sm text-muted-foreground">
-                Trainer: Mark Casse<br />
+                Trainer: Mark Casse
+                <br />
                 Preakness Winner
+              </div>
+            </div>
+            <div className="text-center p-4">
+              <div className="text-3xl font-bold text-secondary mb-1">2024</div>
+              <div className="text-lg font-semibold text-foreground">Catching Freedom</div>
+              <div className="text-sm text-muted-foreground">
+                Canadian co-ownership
+                <br />
+                Finished 4th
               </div>
             </div>
           </div>
@@ -138,7 +155,15 @@ function MapleLeafIcon({ className }: { className?: string }) {
 
 function TrophyIcon({ className }: { className?: string }) {
   return (
-    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+    <svg
+      className={className}
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      strokeWidth="2"
+      strokeLinecap="round"
+      strokeLinejoin="round"
+    >
       <path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6" />
       <path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18" />
       <path d="M4 22h16" />
