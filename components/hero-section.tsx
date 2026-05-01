@@ -103,7 +103,7 @@ export function HeroSection() {
         </div>
 
         {/* CTA */}
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+        <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
           <a
             href="#entries"
             className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-primary text-primary-foreground rounded-lg font-semibold hover:bg-primary/90 transition-colors"
@@ -118,6 +118,55 @@ export function HeroSection() {
             <MapleLeafIcon className="w-5 h-5" />
             Canadian Connection
           </a>
+        </div>
+
+        {/* Secretariat Tribute */}
+        <div className="max-w-3xl mx-auto bg-card/60 backdrop-blur-sm border border-secondary/30 rounded-xl p-6 md:p-8">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <CrownIcon className="w-5 h-5 text-secondary" />
+            <p className="text-secondary font-medium tracking-[0.25em] uppercase text-xs">
+              In Memory of a Legend
+            </p>
+            <CrownIcon className="w-5 h-5 text-secondary" />
+          </div>
+
+          <h3 className="text-2xl md:text-3xl font-bold text-foreground mb-4 italic">
+            Secretariat &mdash; 1973
+          </h3>
+
+          <p className="text-muted-foreground leading-relaxed mb-6 text-balance">
+            Fifty-three years ago, Big Red ran the fastest Kentucky Derby in history.
+            No horse has ever come close. As 20 thoroughbreds chase the roses in 2026,
+            they all run in his shadow.
+          </p>
+
+          <div className="grid grid-cols-3 gap-4 pt-4 border-t border-secondary/20">
+            <div>
+              <div className="text-2xl md:text-3xl font-bold text-secondary tabular-nums">
+                1:59
+                <span className="text-lg align-top">&thinsp;2/5</span>
+              </div>
+              <div className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mt-1">
+                Track Record
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-bold text-secondary tabular-nums">
+                53
+              </div>
+              <div className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mt-1">
+                Years Standing
+              </div>
+            </div>
+            <div>
+              <div className="text-2xl md:text-3xl font-bold text-secondary tabular-nums">
+                31
+              </div>
+              <div className="text-[10px] md:text-xs text-muted-foreground uppercase tracking-wider mt-1">
+                Belmont Lengths
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 
@@ -158,6 +207,15 @@ function MapleLeafIcon({ className }: { className?: string }) {
   return (
     <svg className={className} viewBox="0 0 24 24" fill="currentColor">
       <path d="M12 2L9 7L3 8L6 13L4 19L12 17L20 19L18 13L21 8L15 7L12 2Z" />
+    </svg>
+  )
+}
+
+function CrownIcon({ className }: { className?: string }) {
+  return (
+    <svg className={className} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M2 7l5 5 5-7 5 7 5-5-2 13H4z" />
+      <path d="M4 20h16" />
     </svg>
   )
 }
