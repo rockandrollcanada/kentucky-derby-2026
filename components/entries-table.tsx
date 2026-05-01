@@ -15,10 +15,10 @@ const entries = [
   { post: 10, horse: "Wonder Dean", odds: "25-1", trainer: "Shug McGaughey", jockey: "Jose Ortiz" },
   { post: 11, horse: "Incredibolt", odds: "25-1", trainer: "Brendan Walsh", jockey: "Brian Hernandez Jr." },
   { post: 12, horse: "Chief Wallabee", odds: "10-1", trainer: "Kenny McPeek", jockey: "Julien Leparoux" },
-  { post: 13, horse: "Silent Tactic", odds: "30-1", trainer: "Mark Casse", jockey: "Cristian Torres", canadian: true },
+  { post: 13, horse: "Silent Tactic", odds: "30-1", trainer: "Mark Casse", jockey: "Cristian Torres", scratched: true },
   { post: 14, horse: "Potenete", odds: "15-1", trainer: "Bill Mott", jockey: "Junior Alvarado" },
   { post: 15, horse: "Emerging Market", odds: "20-1", trainer: "Chad Brown", jockey: "Jose Lezcano" },
-  { post: 16, horse: "Pavlovian", odds: "40-1", trainer: "Doug O'Neill", jockey: "Mario Gutierrez" },
+  { post: 16, horse: "Pavlovian", odds: "40-1", trainer: "Doug O'Neill", jockey: "Mario Gutierrez", canadian: true },
   { post: 17, horse: "Six Speed", odds: "40-1", trainer: "Dallas Stewart", jockey: "Corey Lanerie" },
   { post: 18, horse: "Further Ado", odds: "5-1", trainer: "Brad Cox", jockey: "Tyler Gaffalione", favorite: true },
   { post: 19, horse: "Golden Tempo", odds: "30-1", trainer: "Michael McCarthy", jockey: "Ramon Vazquez" },
@@ -94,36 +94,59 @@ export function EntriesTable() {
           {sortedEntries.map((entry) => (
             <div
               key={entry.post}
-              className={`relative bg-card border rounded-lg p-4 transition-all duration-300 hover:scale-[1.02] hover:shadow-lg ${
-                entry.canadian && highlightCanadian
+              className={`relative bg-card border rounded-lg p-4 transition-all duration-300 hover:shadow-lg ${
+                entry.scratched
+                  ? "border-border opacity-60"
+                  : "hover:scale-[1.02]"
+              } ${
+                !entry.scratched && entry.canadian && highlightCanadian
                   ? "border-accent ring-2 ring-accent/50"
-                  : entry.favorite
+                  : !entry.scratched && entry.favorite
                   ? "border-secondary"
                   : "border-border"
               }`}
             >
               {/* Post position badge */}
-              <div className="absolute -top-3 -left-3 w-8 h-8 bg-primary text-primary-foreground rounded-full flex items-center justify-center font-bold text-sm">
+              <div className={`absolute -top-3 -left-3 w-8 h-8 rounded-full flex items-center justify-center font-bold text-sm ${
+                entry.scratched
+                  ? "bg-muted text-muted-foreground line-through"
+                  : "bg-primary text-primary-foreground"
+              }`}>
                 {entry.post}
               </div>
 
+              {/* Scratched badge */}
+              {entry.scratched && (
+                <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-destructive text-destructive-foreground rounded-full text-xs font-bold tracking-wide">
+                  SCRATCHED
+                </div>
+              )}
+
               {/* Canadian badge */}
-              {entry.canadian && (
+              {!entry.scratched && entry.canadian && (
                 <div className="absolute -top-2 -right-2 w-7 h-7 bg-accent text-accent-foreground rounded-full flex items-center justify-center">
                   <MapleLeafIcon className="w-4 h-4" />
                 </div>
               )}
 
               {/* Favorite badge */}
-              {entry.favorite && !entry.canadian && (
+              {!entry.scratched && entry.favorite && !entry.canadian && (
                 <div className="absolute -top-2 -right-2 px-2 py-0.5 bg-secondary text-secondary-foreground rounded-full text-xs font-bold">
                   TOP 3
                 </div>
               )}
 
               <div className="mt-2">
-                <h3 className="text-lg font-bold text-foreground mb-1">{entry.horse}</h3>
-                <div className="text-2xl font-bold text-primary mb-3">{entry.odds}</div>
+                <h3 className={`text-lg font-bold mb-1 ${
+                  entry.scratched ? "text-muted-foreground line-through" : "text-foreground"
+                }`}>
+                  {entry.horse}
+                </h3>
+                <div className={`text-2xl font-bold mb-3 ${
+                  entry.scratched ? "text-muted-foreground line-through" : "text-primary"
+                }`}>
+                  {entry.odds}
+                </div>
                 <div className="space-y-1 text-sm">
                   <p className="text-muted-foreground">
                     <span className="text-foreground/70">T:</span> {entry.trainer}
@@ -152,6 +175,12 @@ export function EntriesTable() {
           <div className="flex items-center gap-2">
             <MapleLeafIcon className="w-4 h-4 text-accent" />
             <span className="text-muted-foreground">Canadian Connection</span>
+          </div>
+          <div className="flex items-center gap-2">
+            <div className="px-2 py-0.5 bg-destructive text-destructive-foreground rounded-full text-xs font-bold">
+              SCRATCHED
+            </div>
+            <span className="text-muted-foreground">Out of the Race</span>
           </div>
         </div>
       </div>
