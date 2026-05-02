@@ -30,6 +30,10 @@ export function EntriesTable() {
   const [highlightCanadian, setHighlightCanadian] = useState(false)
 
   const sortedEntries = [...entries].sort((a, b) => {
+    // Always push scratched entries to the bottom
+    if (a.scratched && !b.scratched) return 1
+    if (!a.scratched && b.scratched) return -1
+
     if (sortBy === "odds") {
       const parseOdds = (o: string) => {
         const [num, den] = o.split("-").map(Number)
@@ -40,6 +44,9 @@ export function EntriesTable() {
     return a.post - b.post
   })
 
+  const scratchedEntries = entries.filter((e) => e.scratched)
+  const activeCount = entries.length - scratchedEntries.length
+
   return (
     <section id="entries" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -48,9 +55,37 @@ export function EntriesTable() {
             Post Positions &amp; Entries
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            20 elite thoroughbreds will compete for the coveted garland of roses
+            {activeCount} elite thoroughbreds will compete for the coveted garland of roses
           </p>
         </div>
+
+        {/* Scratches notice */}
+        {scratchedEntries.length > 0 && (
+          <div className="mb-8 bg-card border border-destructive/40 rounded-lg p-5">
+            <div className="flex flex-wrap items-start gap-4">
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="px-2 py-0.5 bg-destructive text-destructive-foreground rounded-full text-xs font-bold tracking-wide">
+                  SCRATCHED
+                </div>
+                <span className="text-sm font-semibold text-foreground">
+                  {scratchedEntries.length} {scratchedEntries.length === 1 ? "Horse" : "Horses"} Out
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                  {scratchedEntries.map((entry) => (
+                    <li key={entry.post} className="flex items-center gap-1.5">
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-muted text-muted-foreground text-xs font-bold">
+                        {entry.post}
+                      </span>
+                      <span className="line-through">{entry.horse}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Controls */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">
