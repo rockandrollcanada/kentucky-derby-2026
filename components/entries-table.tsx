@@ -3,26 +3,29 @@
 import { useState } from "react"
 
 const entries = [
-  { post: 1, horse: "Renegade", odds: "9-2", trainer: "Steve Asmussen", jockey: "Joel Rosario", favorite: true },
-  { post: 2, horse: "Albus", odds: "40-1", trainer: "John Sadler", jockey: "Mike Smith" },
-  { post: 3, horse: "Intrepido", odds: "30-1", trainer: "Gustavo Delgado", jockey: "Emisael Jaramillo" },
-  { post: 4, horse: "Litmas Test", odds: "35-1", trainer: "Todd Pletcher", jockey: "John Velazquez" },
-  { post: 5, horse: "Right to Party", odds: "50-1", trainer: "Wesley Ward", jockey: "Tyler Gaffalione" },
+  { post: 1, horse: "Renegade", odds: "4-1", trainer: "Steve Asmussen", jockey: "Joel Rosario", favorite: true },
+  { post: 2, horse: "Albus", odds: "30-1", trainer: "John Sadler", jockey: "Mike Smith" },
+  { post: 3, horse: "Intrepido", odds: "50-1", trainer: "Gustavo Delgado", jockey: "Emisael Jaramillo" },
+  { post: 4, horse: "Litmus Test", odds: "50-1", trainer: "Todd Pletcher", jockey: "John Velazquez" },
+  { post: 5, horse: "Right to Party", odds: "50-1", trainer: "Wesley Ward", jockey: "Tyler Gaffalione", scratched: true },
   { post: 6, horse: "Commandment", odds: "6-1", trainer: "Brad Cox", jockey: "Florent Geroux", favorite: true },
-  { post: 7, horse: "Danon Bourbon", odds: "50-1", trainer: "Yoshito Yahagi", jockey: "Yuga Kawada" },
+  { post: 7, horse: "Danon Bourbon", odds: "20-1", trainer: "Yoshito Yahagi", jockey: "Yuga Kawada" },
   { post: 8, horse: "So Happy", odds: "15-1", trainer: "Chad Brown", jockey: "Irad Ortiz Jr." },
-  { post: 9, horse: "The Puma", odds: "10-1", trainer: "Bob Baffert", jockey: "Flavien Prat" },
-  { post: 10, horse: "Wonder Dean", odds: "25-1", trainer: "Shug McGaughey", jockey: "Jose Ortiz" },
-  { post: 11, horse: "Incredibolt", odds: "25-1", trainer: "Brendan Walsh", jockey: "Brian Hernandez Jr." },
-  { post: 12, horse: "Chief Wallabee", odds: "10-1", trainer: "Kenny McPeek", jockey: "Julien Leparoux" },
+  { post: 9, horse: "The Puma", odds: "10-1", trainer: "Bob Baffert", jockey: "Flavien Prat", scratched: true },
+  { post: 10, horse: "Wonder Dean", odds: "30-1", trainer: "Shug McGaughey", jockey: "Jose Ortiz" },
+  { post: 11, horse: "Incredibolt", odds: "20-1", trainer: "Brendan Walsh", jockey: "Brian Hernandez Jr." },
+  { post: 12, horse: "Chief Wallabee", odds: "8-1", trainer: "Kenny McPeek", jockey: "Julien Leparoux" },
   { post: 13, horse: "Silent Tactic", odds: "30-1", trainer: "Mark Casse", jockey: "Cristian Torres", scratched: true },
-  { post: 14, horse: "Potenete", odds: "15-1", trainer: "Bill Mott", jockey: "Junior Alvarado" },
-  { post: 15, horse: "Emerging Market", odds: "20-1", trainer: "Chad Brown", jockey: "Jose Lezcano" },
-  { post: 16, horse: "Pavlovian", odds: "40-1", trainer: "Doug O'Neill", jockey: "Mario Gutierrez", canadian: true },
-  { post: 17, horse: "Six Speed", odds: "40-1", trainer: "Dallas Stewart", jockey: "Corey Lanerie" },
-  { post: 18, horse: "Further Ado", odds: "5-1", trainer: "Brad Cox", jockey: "Tyler Gaffalione", favorite: true },
+  { post: 14, horse: "Potente", odds: "20-1", trainer: "Bill Mott", jockey: "Junior Alvarado" },
+  { post: 15, horse: "Emerging Market", odds: "15-1", trainer: "Chad Brown", jockey: "Jose Lezcano" },
+  { post: 16, horse: "Pavlovian", odds: "30-1", trainer: "Doug O'Neill", jockey: "Mario Gutierrez", canadian: true },
+  { post: 17, horse: "Six Speed", odds: "50-1", trainer: "Dallas Stewart", jockey: "Corey Lanerie" },
+  { post: 18, horse: "Further Ado", odds: "6-1", trainer: "Brad Cox", jockey: "Tyler Gaffalione", favorite: true },
   { post: 19, horse: "Golden Tempo", odds: "30-1", trainer: "Michael McCarthy", jockey: "Ramon Vazquez" },
-  { post: 20, horse: "Fulleffort", odds: "20-1", trainer: "Tim Yakteen", jockey: "Juan Hernandez" },
+  { post: 20, horse: "Fulleffort", odds: "20-1", trainer: "Tim Yakteen", jockey: "Juan Hernandez", scratched: true },
+  { post: 21, horse: "Great White", odds: "50-1", trainer: "TBA", jockey: "TBA" },
+  { post: 22, horse: "Ocelli", odds: "50-1", trainer: "TBA", jockey: "TBA" },
+  { post: 23, horse: "Robusta", odds: "50-1", trainer: "TBA", jockey: "TBA" },
 ]
 
 export function EntriesTable() {
@@ -30,6 +33,10 @@ export function EntriesTable() {
   const [highlightCanadian, setHighlightCanadian] = useState(false)
 
   const sortedEntries = [...entries].sort((a, b) => {
+    // Always push scratched entries to the bottom
+    if (a.scratched && !b.scratched) return 1
+    if (!a.scratched && b.scratched) return -1
+
     if (sortBy === "odds") {
       const parseOdds = (o: string) => {
         const [num, den] = o.split("-").map(Number)
@@ -40,6 +47,9 @@ export function EntriesTable() {
     return a.post - b.post
   })
 
+  const scratchedEntries = entries.filter((e) => e.scratched)
+  const activeCount = entries.length - scratchedEntries.length
+
   return (
     <section id="entries" className="py-20 px-4">
       <div className="max-w-6xl mx-auto">
@@ -48,9 +58,37 @@ export function EntriesTable() {
             Post Positions &amp; Entries
           </h2>
           <p className="text-muted-foreground text-lg max-w-2xl mx-auto">
-            20 elite thoroughbreds will compete for the coveted garland of roses
+            {activeCount} elite thoroughbreds will compete for the coveted garland of roses
           </p>
         </div>
+
+        {/* Scratches notice */}
+        {scratchedEntries.length > 0 && (
+          <div className="mb-8 bg-card border border-destructive/40 rounded-lg p-5">
+            <div className="flex flex-wrap items-start gap-4">
+              <div className="flex items-center gap-2 shrink-0">
+                <div className="px-2 py-0.5 bg-destructive text-destructive-foreground rounded-full text-xs font-bold tracking-wide">
+                  SCRATCHED
+                </div>
+                <span className="text-sm font-semibold text-foreground">
+                  {scratchedEntries.length} {scratchedEntries.length === 1 ? "Horse" : "Horses"} Out
+                </span>
+              </div>
+              <div className="flex-1 min-w-0">
+                <ul className="flex flex-wrap gap-x-4 gap-y-1 text-sm text-muted-foreground">
+                  {scratchedEntries.map((entry) => (
+                    <li key={entry.post} className="flex items-center gap-1.5">
+                      <span className="inline-flex items-center justify-center w-5 h-5 rounded-full bg-muted text-muted-foreground text-xs font-bold">
+                        {entry.post}
+                      </span>
+                      <span className="line-through">{entry.horse}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Controls */}
         <div className="flex flex-wrap justify-center gap-4 mb-8">

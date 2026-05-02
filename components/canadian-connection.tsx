@@ -81,7 +81,7 @@ export function CanadianConnection() {
             </div>
 
             <h3 className="text-3xl font-bold text-foreground mb-2">Pavlovian</h3>
-            <p className="text-2xl text-primary font-bold mb-6">40-1</p>
+            <p className="text-2xl text-primary font-bold mb-6">30-1</p>
 
             <div className="space-y-4 mb-6">
               <div className="flex justify-between py-2 border-b border-border">
